@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('client', function(Blueprint $table): void{
+        Schema::create('client', function(Blueprint $table): void{
             $table->id('idClient');
             $table->string('namaPebisnis');
             $table->string('namaClient');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->date('tglNonAktif');
             $table->string('alasaNonaktif');
             $table->timestamps();
-            $table->integer('idAdmin')->unsigned();
+            $table->bigInteger('idAdmin')->unsigned();
             $table->foreign('idAdmin')->references('idAdmin')->on('admin');
         });
     }

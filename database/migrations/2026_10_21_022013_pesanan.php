@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('pesanan', function(Blueprint $table): void{
+        Schema::create('pesanan', function(Blueprint $table): void{
             $table->id('idPesanan');
             $table->string('namaCostumer');
             $table->string('lokasiTempat');
@@ -19,9 +19,9 @@ return new class extends Migration
             $table->integer('jumlahJasa');
             $table->string('FotoKondisiTempat');
             $table->enum('status',['proses','selesai']);
-            $table->integer('idCostumer')->unsigned();
-            $table->integer('idLayanan')->unsigned();
-            $table->integer('idClient')->unsigned();
+            $table->bigInteger('idCostumer')->unsigned();
+            $table->bigInteger('idLayanan')->unsigned();
+            $table->bigInteger('idClient')->unsigned();
             $table->foreign('idCostumer')->references('idCostumer')->on('costumer');
             $table->foreign('idLayanan')->references('idLayanan')->on('layanan');
             $table->foreign('idClient')->references('idClient')->on('client');
